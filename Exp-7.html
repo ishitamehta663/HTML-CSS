@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Event Handling and AJAX Demo</title>
+    
+    <!-- Include jQuery from CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Button click events
+            $("#hideBtn").click(function(){
+                $("p").hide();
+            });
+
+            $("#showBtn").click(function(){
+                $("p").show();
+            });
+
+            $("#toggleBtn").click(function(){
+                $("p").toggle();
+            });
+
+            $("#slideUpBtn").click(function(){
+                $("p").slideUp();
+            });
+
+            $("#slideDownBtn").click(function(){
+                $("p").slideDown();
+            });
+
+            $("#changeColorBtn").click(function(){
+                $("p").css("background-color", "lightyellow");
+            });
+
+            // AJAX Call: Update content on the page using AJAX GET request
+            $("#loadDataBtn").click(function(){
+                $.get("https://jsonplaceholder.typicode.com/posts/1", function(data){
+                    // Display fetched data in the paragraph
+                    $("p").text("Title: " + data.title + " | Body: " + data.body);
+                });
+            });
+
+            // Alert message for each button click
+            $("button").click(function(){
+                alert("You clicked the " + $(this).text() + " button!");
+            });
+        });
+    </script>
+
+    <style>
+        p {
+            width: 100%;
+            height: 100px;
+            background-color: rgb(98, 180, 248);
+            padding: 10px;
+            text-align: center;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+            background-color: rgb(130, 150, 236);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Paragraphs that will be manipulated by jQuery -->
+    <p>Hello, Welcom back!</p>
+
+    <!-- Seven buttons to demonstrate different jQuery events -->
+    <button id="hideBtn">Hide</button>
+    <button id="showBtn">Show</button>
+    <button id="toggleBtn">Toggle</button>
+    <button id="slideUpBtn">Slide Up</button>
+    <button id="slideDownBtn">Slide Down</button>
+    <button id="changeColorBtn">Change Background Color</button>
+    <button id="loadDataBtn">Load Data (AJAX)</button>
+
+</body>
+</html>
